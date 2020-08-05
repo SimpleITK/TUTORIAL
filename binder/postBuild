@@ -1,0 +1,3 @@
+set -ex
+
+pip install SimpleITK>1.2.4 --pre --find-links https://github.com/SimpleITK/SimpleITK/releases/tag/latest

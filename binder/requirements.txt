@@ -1,0 +1,10 @@
+jupyter
+matplotlib
+ipywidgets
+itkwidgets
+numpy
+scipy
+pandas
+multiprocess
+
+    
