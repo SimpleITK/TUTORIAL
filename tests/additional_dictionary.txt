@@ -176,6 +176,7 @@ MRCImageIO
 MacCallum
 MacOS
 Mahalanobis
+Maier
 Malpica
 Marschner
 MattesMutualInformation
@@ -343,6 +344,7 @@ customizable
 dapi
 dataframe
 dataset
+datasets
 dciodvfy
 debugOn
 defaultPixelValue
@@ -422,12 +424,14 @@ metricvalue
 mha
 midas
 minima
+multiprocess
 multiscale
 myshow
 nD
 natively
 nbagg
 nbextension
+nm
 nms
 np
 num
@@ -469,8 +473,10 @@ py
 pyplot
 qs
 quaternion
+radiographic
 radiological
 recognised
+redisplay
 referenceImage
 resample
 resampled
@@ -514,6 +520,7 @@ sitkVectorInt
 sitkVectorUInt
 sitkWelchWindowedSinc
 smoothingSigmas
+spacings
 spatio
 spc
 sqrt

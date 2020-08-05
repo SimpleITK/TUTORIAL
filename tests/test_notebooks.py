@@ -73,7 +73,18 @@ class Test_notebooks(object):
     _expected_error_markup = 'simpleitk_error_expected'
 
     @pytest.mark.parametrize('notebook_file_name',
-                             ['00_setup.ipynb'])
+                             ['00_setup.ipynb',
+                              '01_spatial_transformations.ipynb',
+                              '02_images_and_resampling.ipynb',
+                              '03_trust_but_verify.ipynb',
+                              '04_data_augmentation.ipynb',
+                              '05_basic_registration.ipynb',
+                              '06_advanced_registration.ipynb',
+                              '07_registration_application.ipynb',
+                              pytest.param('08_segmentation_and_shape_analysis.ipynb', marks=pytest.mark.skipif(os.environ.get('CIRCLECI')=='true', \
+                                                                                                                reason="runtime too long for CircleCI")),
+                              '09_segmentation_evaluation.ipynb',
+                              '10_results_visualization.ipynb'])
     def test_python_notebook(self, notebook_file_name):
        self.evaluate_notebook(self.absolute_path_python(notebook_file_name), 'python')
 
