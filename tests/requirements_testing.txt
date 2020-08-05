@@ -1,0 +1,13 @@
+pytest
+markdown
+lxml
+pyenchant
+jupyter
+matplotlib
+ipywidgets
+itkwidgets
+numpy
+scipy
+pandas
+multiprocess
+SimpleITK>1.2.4

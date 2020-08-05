@@ -1,0 +1,62 @@
+{
+"SimpleITK.jpg" : {
+  "sha512": "f1b5ce1bf9d7ebc0bd66f1c3bc0f90d9e9798efc7d0c5ea7bebe0435f173355b27df632971d1771dc1fc3743c76753e6a28f6ed43c5531866bfa2b38f1b8fd46"
+ },
+ "CIRS057A_MR_CT_DICOM/readme.txt" : {
+     "sha512": "d5130cfca8467c4efe1c6b4057684651d7b74a8e7028d9402aff8e3d62287761b215bc871ad200d4f177b462f7c9358f1518e6e48cece2b51c6d8e3bb89d3eef",
+ "archive" : "true"
+ },
+ "training_001_ct.mha" : {
+  "sha512": "1b950bc42fddfcefc76b9203d5dd6c45960c4fa8dcb69b839d3d083270d3d4c9a9d378de3d3f914e432dc18fb44c9b9770d4db5580a70265f3e24e6cdb83015d"
+ },
+ "training_001_mr_T1.mha" : {
+  "sha512": "3d15477962fef5851207964c381ffe77c586a6f70f2a373ecd3b6b4dc50d51dc6cd893eb1bedabcd382a96f0dafac893ae9e5a7c2b7333f9ff3f0c6b7016c7bc"
+ },
+ "POPI/meta/00-P.mhd" : {
+  "sha512": "09fcb39c787eee3822040fcbf30d9c83fced4246c518a24ab14537af4b06ebd438e2f36be91e6e26f42a56250925cf1bfa0d2f2f2192ed2b98e6a9fb5f5069fc",
+  "url" : "http://tux.creatis.insa-lyon.fr/~srit/POPI/Images/MetaImage/00-MetaImage.tar",
+  "archive" : "true"
+ },
+ "POPI/meta/70-P.mhd" : {
+  "sha512": "87c256ff441429babceab5f9886397f7c4b4f85525dfb5a786ed64b97f4779d3b313b3faf1449dddb7ba5ed49719ff0eea296a3367cdc98e753f597028a6f0e0",
+  "url" : "http://tux.creatis.insa-lyon.fr/~srit/POPI/Images/MetaImage/70-MetaImage.tar",
+  "archive" : "true"
+ },
+ "POPI/landmarks/00-Landmarks.pts" : {
+  "sha512": "7c2120b1f6d4b855aa11bf05dd987d677c219ca4bdfbd39234e7835285c45082c229fb5cc09e00e6bd91b339eeb1f700c597f4166633421a133c21ce773b25ad",
+  "url" : "http://tux.creatis.insa-lyon.fr/~srit/POPI/Landmarks/00-Landmarks.pts"
+ },
+ "POPI/landmarks/70-Landmarks.pts" : {
+  "sha512": "5bbcb192a275b30510fb1badcd12c9110ed7909d4353c76567ebb0aae61fb944a9c4f3d8cd8ffa0519d8621626d06db333c456eda9c68c3a03991e291760f44c",
+  "url" : "http://tux.creatis.insa-lyon.fr/~srit/POPI/Landmarks/70-Landmarks.pts"
+ },
+ "POPI/masks/00-air-body-lungs.mhd" : {
+  "sha512": "e20e93b316390ea53c59427a8ab770bb3ebda1f2e4c911382b753ec024d812de8a6c13d1919b77a1687c4f611acdb62ea92c05b2cc3ed065046fbdbe139538c8",
+  "url" : "http://tux.creatis.insa-lyon.fr/~srit/POPI/Masks/00Mask-MetaImage.tar",
+  "archive" : "true"
+ },
+ "POPI/masks/70-air-body-lungs.mhd" : {
+  "sha512": "cbbd4b71b9771b36dc71fe6c564c96fde363878713680a624b9b307c4d9959835731c841be6b9304457d212350cc0ffac44385994b9bc9b2d8523e2463c664f8",
+  "url": "http://tux.creatis.insa-lyon.fr/~srit/POPI/Masks/70Mask-MetaImage.tar",
+  "archive" : "true"
+ },
+ "fib_sem_bacillus_subtilis.mha": {
+  "sha512": "5f7c34428362434c4ff3353307f8401ea38a18a68e9fc1705138232b4c70da2fcf3e2e8560ba917620578093edb392b418702edca3be0eafa23d6f52ced73314"
+ },
+ "leg_panorama/readme.txt": {
+  "archive": "true",
+    "sha512":"0771b63d7f8ed19d16ca36de144d6570cc3f8d604be56626ceb932f6bbf60857282f52aad4158f85e8a01bb1c84222da5b23fd3df91ec46ebe625341f56d6bf9"
+ },
+ "liverTumorSegmentations/Patient01Homo.mha": {
+  "sha512": "c57e6c51bdd9dd46034df3c01e3187d884526dbcfcf8e056221205bac1a09098142692a1bc76f3834a78a809570e64544dbec9b9d264747383ee71e20b21d054"
+ },
+ "liverTumorSegmentations/Patient01Homo_Rad01.mha": {
+  "sha512": "e94fb4d96e5cc5dca3c68fc67f63e895b8a71011f5343b4399e122b8f6a43ec5d5055f939299e3d9955e59cd841ebeb2d2395568c10ce29a597c518db784a337"
+ },
+ "liverTumorSegmentations/Patient01Homo_Rad02.mha": {
+  "sha512": "e055aff99a1c05ab90b84af048dd94d32236dcb4e4b8ce0a99ba3658fe85cc7c8505b806a92611bcf5ecf4cd0dbe6cafc336efdb9fe49753d1fc4aed174ed8ba"
+ },
+ "liverTumorSegmentations/Patient01Homo_Rad03.mha": {
+  "sha512": "89e4040e17aba2fae50e0b59b2043203ab33ce3ae6ef90af8ebc8c032a6aaee35084bf1e34ce1a390d157b8fadae2fa7694203a0886f54cc9da5293dbaa5d0e7"
+ }
+}

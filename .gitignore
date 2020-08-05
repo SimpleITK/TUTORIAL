@@ -1,0 +1,13 @@
+.DS_Store
+Data
+build
+*.o
+\#*\#
+*\#
+*~
+*.pyc
+*.orig
+.ipynb_checkpoints/
+.*.swp
+.mha
+.jpg
