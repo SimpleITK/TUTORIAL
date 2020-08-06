@@ -1,0 +1,286 @@
+<html>
+<head>
+  <title>SimpleITK Tutorial </title>
+
+<!-- Include in <head> to load fonts from Google -->
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<style>
+  body {
+	text-align: justify;
+	font-family: "Roboto Condensed", sans-serif;
+  }
+
+ #nav {
+        margin-top: -8px;
+	width: 900;
+	padding: 0;
+        z-index: 100;
+        background-color: #fff;
+ }
+
+#nav ul {
+    list-style-type: none;
+}
+
+#nav li {
+	float: left;
+}
+
+#nav li a {
+	display: block;
+	padding: 8px 15px;
+	text-decoration: none;
+	color: #069;
+}
+
+#nav li a:hover {
+	color: #c00;
+	background-color: #fff;
+}
+
+pre, code {
+ background-color: LightGrey;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<table id="nav">
+  <tr><td align="center">
+    <img src="simpleitkLogo.jpg" border="0" height="180" align="middle" alt="SimpleITK 
+    tutorial"></a>
+</td></tr>
+<tr><td>
+<ul>
+  <li><a class="active" href="#overview"><span style="font-weight:bold">OVERVIEW</span></a></li>
+  <li><a href="#setup"><span style="font-weight:bold">SETUP</span></a></li>
+  <li><a href="#tutorial"><span style="font-weight:bold">TUTORIAL</span></a></li>
+  <li><a href="#support"><span style="font-weight:bold">SUPPORT</span></a></li>
+  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </li>
+  <li><input type="button" 
+  style="background-color:rgb(40,87,165);color:rgb(247,148,30);width:150px;
+height:40px;float:left;border:outset;border-color:rgb(247,148,30);font-weight:bold;font-size:20px;" 
+onclick="window.location.href = 
+'https://mybinder.org/v2/gh/SimpleITK/TUTORIAL/master?filepath=01_spatial_transformations.ipynb';" 
+value="Try Now &raquo;"></li>
+</ul>
+</table>
+
+<table width="900" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+<p style="background-color:CornflowerBlue;">
+</p>
+
+<!--<p style="border:2px; border-style:solid; border-color:#FF0000;">-->
+	
+<p style="border:2px; border-style:solid; border-color:#FF0000;">
+	If you encounter problems or have tutorial specific questions, please post on 
+	<a href="https://github.com/SimpleITK/TUTORIAL/issues">the tutorial's GitHub issue
+		reporting system</a> (requires a GitHub user account). For general SimpleITK questions, please 
+		use <a href="https://discourse.itk.org/">the ITK discourse forum</a>.
+</p>
+<a id="overview"></a><h3><u>Overview</u></h3>
+
+
+<p>
+	<a href="https://simpleitk.org/">SimpleITK</a> is a simplified programming 
+	interface to the algorithms and data
+structures of the <a
+	href="https://itk.org/">Insight Toolkit</a> (ITK) for 
+	segmentation, registration and
+advanced image analysis. It supports bindings for multiple programming languages
+including C++, Python, R, Java, C#, Lua, Ruby and TCL. Combining SimpleITK’s
+Python bindings with the <a href="http://jupyter.org/">Jupyter
+	notebook</a> web application creates an environment
+which facilitates collaborative development of biomedical image analysis
+workflows.
+</p>
+
+<p>
+In this tutorial, we use a hands-on approach utilizing Python and Jupyter notebooks to
+explore and experiment with various SimpleITK features. You can browse the Jupyter notebooks on 
+your own, watch the videos associated with these notebooks or work your way through the notebooks 
+following along with the videos.
+</p>
+
+<p>
+Additional details and notebooks can be found on the <a 
+href="https://github.com/InsightSoftwareConsortium/SimpleITK-Notebooks">main SimpleITK 
+notebooks repository</a>.
+</p>
+
+
+<a id="setup"></a><h3><u>Setup</u></h3>
+
+
+
+<p>
+In this tutorial we will use the Anaconda Python distribution. Please follow the
+instructions below to setup the environment. All
+commands below are issued on the <b>command line</b> (Linux/Mac - terminal,
+Windows - Anaconda Prompt).
+</p>
+
+<ol>
+<li>
+<a href= "https://fiji.sc/#download"> Download and install</a> the Fiji image viewer. This is the default image viewer used by SimpleITK:
+  <ul>
+   <li>
+   On Windows: Install into your user directory (e.g. C:\Users\[your_user_name]\).
+   </li>
+   <li>
+   On Linux: Install into ~/bin/ .
+   </li>
+   <li>
+   On Mac: Install into /Applications/ or ~/Applications/ .
+   </li>
+  </ul>
+
+</li>
+
+<li>
+<a href="https://www.anaconda.com/download/">Download and install</a> the most
+recent version of Anaconda for your operating system. We assume it is installed
+in a directory named anaconda3. Regardless of the installer, we will be working
+with Python 3.8
+</li>
+
+<li>
+  <ul>
+   <li> On Windows: open the Anaconda Prompt (found under the Anaconda3 start menu).</li>
+   <li> On Linux/Mac: on the command line <code>source path_to_anaconda3/bin/activate base</code></li>
+  </ul>
+</li>
+
+<li>
+Update the base anaconda environment and install the git version control system into it.
+<pre><code>conda update conda
+conda update anaconda
+conda install git
+</code></pre>
+</li>
+
+<li>
+Clone this repository:
+<pre><code>git clone https://github.com/SimpleITK/TUTORIAL.git
+</code></pre>
+</li>
+
+<li>
+Create the virtual environment containing all packages required for the course:
+<pre><code>conda env create -f TUTORIAL/environment.yml
+</code></pre>
+</li>
+
+<li>
+Activate the virtual environment:
+  <ul>
+   <li> On Windows: open the Anaconda Prompt (found under the Anaconda3 start menu)<br><code> 
+   conda activate sitkpy</code></li>
+   <li> On Linux/Mac: on the command line <br><code>source path_to_anaconda3/bin/activate 
+   sitkpy</code></li>
+  </ul>
+</li>
+
+</ol>
+
+
+
+<a id="tutorial"></a><h3><u>Tutorial</u></h3>
+<p>
+Click the launch binder button to try things out without installing
+<a 
+href="https://mybinder.org/v2/gh/SimpleITK/TUTORIAL/master?filepath=01_spatial_transformations.ipynb">
+<img src="https://mybinder.org/badge_logo.svg"></a>, some display functions that use an external 
+viewer will not work.
+</p>
+<ul>
+<li>
+	Start the tutorial by running the setup notebook. This notebook checks the environment setup and 
+	downloads all of the required data. At the bottom of each notebook you will find a button that will 
+	open the next notebook.
+	<pre>
+	<code>
+cd TUTORIAL
+jupyter notebook 00_setup.ipynb
+</code>
+</pre>
+</li>
+<li>Introduction:
+	<ul>
+	<li>
+	History [<a href="simpleitkHistoricalOverview.pptx">ppt</a>].
+  	</li>
+    <li>
+    Overview and fundamental concepts [<a href="simpleitkFundamentalConcepts.pptx">ppt</a>].
+    </li>
+    </ul> 
+<li>Foundations:
+	<ul>
+		<li>Spatial transformations.</li>
+		<li>Images and resampling.</li>
+	</ul>
+<li>
+	Big Data:
+	<ul>
+	<li> Efficient inspection of large image collections.</li> 
+	<li>Data augmentation for deep learning.</li>
+    </ul>
+</li>
+<li>
+	Registration:
+	<ul>
+		<li>The basic framework and initialization. </li>
+		<li>Nonrigid local domain transformations (FFD, Demons), and results evaluation.</li>
+		<li>Medical application example.</li>
+	</ul>
+<li>
+	Segmentation:
+	<ul>
+	<li>Microscopy application and shape analysis.</li>
+	<li>Results evaluation.</li>
+    </ul>
+</li>
+<li>Results visualization. </li>
+</ul>
+
+<a id="support"></a><h3><u>Support</u></h3>
+
+<p>
+Star us on GitHub (requires GitHub account):
+<ul>
+<li><a href="https://github.com/SimpleITK/SimpleITK">Main repository</a>.</li>
+<li><a href="https://github.com/InsightSoftwareConsortium/SimpleITK-Notebooks">Jupyter notebooks 
+repository</a>.</li>
+</ul>
+</p>
+<p>
+If you find that SimpleITK has been useful in your research, cite the appropriate paper (<a 
+	href="simpleitk.bib">citations.bib</a>):</p>
+<ul>
+<li>
+R. Beare, B. C. Lowekamp, Z. Yaniv, "<a href="https://www.jstatsoft.org/article/view/v086i08">Image Segmentation, Registration and Characterization in R with SimpleITK</a>", <i>J Stat Softw</i>, 86(8), 2018.
+</li>		
+<li>
+Z. Yaniv, B. C. Lowekamp, H. J. Johnson, R. Beare, "<a href="https://doi.org/10.1007/s10278-017-0037-8">SimpleITK Image-Analysis Notebooks: a Collaborative Environment for 
+	Education and Reproducible Research</a>", <i>J Digit Imaging.</i>, 31(3): 290-303, 2018.
+</li>
+<li>
+B. C. Lowekamp, D. T. Chen, L. Ib&aacute;&ntilde;ez, D. Blezek, "<a href="https://doi.org/10.3389/fninf.2013.00045">The Design of SimpleITK</a>", <i>Front. Neuroinform.</i>, 7:45., 2013.
+</li>
+</ul>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
