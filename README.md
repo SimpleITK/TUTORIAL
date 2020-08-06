@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/SimpleITK/TUTORIAL.svg?style=shield)](https://circleci.com/gh/SimpleITK/TUTORIAL) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Tutorial Website](https://img.shields.io/badge/tutorial-website-brightgreen)](https://simpleitk.org/TUTORIAL/)
+[![CircleCI](https://circleci.com/gh/SimpleITK/TUTORIAL.svg?style=shield)](https://circleci.com/gh/SimpleITK/TUTORIAL) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Tutorial Website](https://img.shields.io/badge/tutorial-website-brightgreen)](https://simpleitk.org/TUTORIAL/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SimpleITK/TUTORIAL/master?filepath=01_spatial_transformations.ipynb)
 
 # Welcome to SimpleITK!
 
