@@ -4,6 +4,7 @@ import numpy as np
 import os
 import sys
 import subprocess
+import platform
 
 # We use the multiprocess package instead of the official 
 # multiprocessing as it currently has several issues as discussed
@@ -52,13 +53,13 @@ To run the script one needs to specify:
 Examples:
 Run a generic file analysis:
 python characterize_data.py data/ output/generic_image_data_report.csv per_file \
---imageIO '' --external_applications ./dciodvfy --external_applications_headings 'DICOM Compliant' \
---metadata_keys '0008|0060' '0018|5101' --metadata_keys_headings 'modality' 'radiographic view'
+--imageIO "" --external_applications ./dciodvfy --external_applications_headings "DICOM Compliant" \
+--metadata_keys "0008|0060" "0018|5101" --metadata_keys_headings "modality" "radiographic view"
 
 
 Run a DICOM series based analysis:
 python characterize_data.py data/ output/DICOM_image_data_report.csv per_series \
---metadata_keys '0008|0060' '0018|5101' --metadata_keys_headings 'modality' 'radiographic view'   
+--metadata_keys "0008|0060" "0018|5101" --metadata_keys_headings "modality" "radiographic view"
 '''
 
 
@@ -219,11 +220,17 @@ def inspect_files(root_dir, imageIO='', meta_data_keys=[], external_programs=[],
         all_file_names += [os.path.join(os.path.abspath(dir_name), fname) for fname in file_names]
     # Get list of lists describing the results and then combine into a dataframe, faster
     # than appending to the dataframe one by one. Use parallel processing to speed things up.
-    with mp.Pool(processes=MAX_PROCESSES) as pool:
-        res = pool.map(partial(inspect_single_file,
-                               imageIO=imageIO, 
-                               meta_data_keys=meta_data_keys, 
-                               external_programs=external_programs), all_file_names)
+    if platform.system() == 'Windows':
+        res = map(partial(inspect_single_file,
+                          imageIO=imageIO,
+                          meta_data_keys=meta_data_keys,
+                          external_programs=external_programs), all_file_names)
+    else:
+        with mp.Pool(processes=MAX_PROCESSES) as pool:
+            res = pool.map(partial(inspect_single_file,
+                                   imageIO=imageIO,
+                                   meta_data_keys=meta_data_keys,
+                                   external_programs=external_programs), all_file_names)
     return pd.DataFrame(res, columns=column_names)
 
 
