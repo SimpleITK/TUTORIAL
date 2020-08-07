@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import os
 import sys
+import shutil
 import subprocess
 import platform
 
@@ -265,11 +266,22 @@ def inspect_single_series(series_data, meta_data_keys=[]):
         # As the files comprising a series with multiple files can reside in 
         # separate directories and SimpleITK expects them to be in a single directory 
         # we use a tempdir and symbolic links to enable SimpleITK to read the series as
-        # a single image.
+        # a single image. Additionally the files are renamed as they may have resided in
+        # separate directories with the same file name. Finally, unfortunatly on windows
+        # we copy the files to the tempdir as the os.symlink documentation says that
+        # "On newer versions of Windows 10, unprivileged accounts can create symlinks
+        # if Developer Mode is enabled. When Developer Mode is not available/enabled,
+        # the SeCreateSymbolicLinkPrivilege privilege is required, or the process must be
+        # run as an administrator."
         with tempfile.TemporaryDirectory() as tmpdirname:
-            for fname in file_names:
-                os.symlink(os.path.abspath(fname),
-                           os.path.join(tmpdirname,os.path.basename(fname)))
+            if platform.system() == 'Windows':
+                for i, fname in enumerate(file_names):
+                    shutil.copy(os.path.abspath(fname),
+                                os.path.join(tmpdirname,str(i)))
+            else:
+                for i, fname in enumerate(file_names):
+                    os.symlink(os.path.abspath(fname),
+                                os.path.join(tmpdirname,str(i)))
             reader.SetFileNames(sitk.ImageSeriesReader_GetGDCMSeriesFileNames(tmpdirname, sid))
             img = reader.Execute()
             for k in meta_data_keys:
