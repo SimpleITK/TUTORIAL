@@ -10,4 +10,4 @@ numpy
 scipy
 pandas
 multiprocess
-SimpleITK>1.2.4
+SimpleITK>=2.0.0
