@@ -1,10 +1,20 @@
-name: Linux and OSX Notebook Testing
+name: Notebook Testing
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - 'binder/**'
+      - 'figures/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - 'binder/**'
+      - 'figures/**'
   schedule:
   # run testing on the first of each month 5am ET / 9am UTC 
   - cron: '0 9 1 * *'
@@ -46,9 +56,12 @@ jobs:
     - name: Install enchant on non windows systems
       shell: bash
       run: |
-        if [ "$RUNNER_OS" != "Windows" ]; then
+        if [ "$RUNNER_OS" == "Linux" ]; then
           sudo apt-get update
           sudo apt-get install enchant
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          brew update
+          brew install enchant
         fi
     # pyenchant on windows includes enchant
     - name: Install dependencies
