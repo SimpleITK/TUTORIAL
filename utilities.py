@@ -214,7 +214,7 @@ def parameter_space_regular_grid_sampling(*transformation_parameters):
         >>>> parameter_space_regular_grid_sampling(np.linspace(1.0,2.0,3), np.linspace(1.0,1.0,1))
     """
     return [
-        [np.asscalar(p) for p in parameter_values]
+        [p.item() for p in parameter_values]
         for parameter_values in np.nditer(np.meshgrid(*transformation_parameters))
     ]
 
