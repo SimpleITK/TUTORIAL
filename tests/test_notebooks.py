@@ -11,12 +11,7 @@ from enchant.tokenize import Filter, EmailFilter, URLFilter
 from enchant import DictWithPWL
 
 from lxml.html import document_fromstring, etree
-
-try:
-    # Python 3
-    from urllib.request import urlopen, URLError
-except ImportError:
-    from urllib2 import urlopen, URLError
+from urllib.request import urlopen, URLError
 
 
 """
@@ -156,8 +151,12 @@ class Test_notebooks(object):
                 # iterlinks() returns tuples of the form (element, attribute, link, pos)
                 for document_link in html_tree.iterlinks():
                     try:
-                        if "http" not in document_link[2]:  # Local file.
-                            url = "file://" + os.path.abspath(document_link[2])
+                        if (
+                            "http" not in document_link[2]
+                        ):  # Local file (uri uses forward slashes, windows backwards).
+                            url = "file:///" + os.path.abspath(
+                                document_link[2]
+                            ).replace("\\", "/")
                         else:  # Remote file.
                             url = document_link[2]
                         urlopen(url)
