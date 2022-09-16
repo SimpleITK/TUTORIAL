@@ -1,19 +1,25 @@
-name: sitkpy
+name: sitkpy_dev
 
 channels:
   - defaults
   - simpleitk
-  - conda-forge
   
 dependencies:
   - python=3.9
   - jupyter
   - matplotlib
   - ipywidgets
-  - itkwidgets
   - numpy
   - scipy
   - pandas
   - multiprocess
   - SimpleITK>=2.2.0
+  - pytest
+  - markdown
+  - lxml
+  - pip
+  - pip:
+    - black[jupyter]
+    - pyenchant
+    - itkwidgets[notebook]
     
