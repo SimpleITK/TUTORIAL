@@ -241,8 +241,12 @@ class Test_notebooks(object):
         """
 
         # Execute the notebook and allow errors (run all cells), output is
-        # written to a temporary file which is automatically deleted.
-        with tempfile.NamedTemporaryFile(suffix=".ipynb") as fout:
+        # written to a temporary file which should be automatically deleted.
+        # Windows has a bug with temporary files (see https://bugs.python.org/issue14243),
+        # so we need to set the delete flag to False on windows, addressing that issue.
+        with tempfile.NamedTemporaryFile(
+            suffix=".ipynb", delete=os.name != "nt"
+        ) as fout:
             args = [
                 "jupyter",
                 "nbconvert",

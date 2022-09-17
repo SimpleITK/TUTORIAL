@@ -63,7 +63,7 @@ jobs:
           brew update
           brew install enchant
         fi
-    # pyenchant on windows includes enchant
+    # on windows, the pyenchant package includes enchant
     - name: Install dependencies
       run: |
         pip install --upgrade pip
