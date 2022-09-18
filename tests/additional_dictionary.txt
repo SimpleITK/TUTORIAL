@@ -41,6 +41,7 @@ Clin
 CoRR
 Colocalization
 ComposeImageFilter
+ComposeScaleSkewVersor
 CompositeTransform
 ConfidenceConnected
 ConjugateGradientLineSearch
@@ -212,6 +213,7 @@ RGB
 RIRE
 RLE
 ROIs
+RSK
 Radiographic
 ReadImage
 ReadImageInformation
@@ -429,6 +431,7 @@ multiprocess
 multiscale
 myshow
 nD
+nanometers
 natively
 nbagg
 nbextension
