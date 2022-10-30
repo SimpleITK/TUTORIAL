@@ -38,7 +38,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        inputs: ["00_ or 01_ or 02_ or 03_ or 04_ or 05_", "06_ or 07_ or 08_ or 09_ or 10_"]
+        inputs: ["00_ or 01_ or 02_ or 03_ or 04_ or 05_ or 06_", "07_ or 08_ or 09_ or 10_"]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
