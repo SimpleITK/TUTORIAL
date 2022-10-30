@@ -50,7 +50,6 @@ jobs:
         key: notebook-data-${{ hashFiles('data/manifest.json') }}
         restore-keys: |
           notebook-data-${{ hashFiles('data/manifest.json') }}
-          notebook-data-
     - name: Set up Python 3.9
       uses: actions/setup-python@v4
       with:
