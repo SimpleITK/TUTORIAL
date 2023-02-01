@@ -6,6 +6,7 @@ import numpy as np
 # Set of methods used for displaying the registration metric during the optimization.
 #
 
+
 # Callback invoked when the StartEvent happens, sets up our new data.
 def start_plot():
     global metric_values, multires_iterations, ax, fig

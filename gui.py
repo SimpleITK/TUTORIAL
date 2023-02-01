@@ -548,7 +548,6 @@ def multi_image_display2D(
     figure_size=(10, 8),
     horizontal=True,
 ):
-
     if title_list:
         if len(image_list) != len(title_list):
             raise ValueError("Title list and image list lengths do not match")
@@ -608,7 +607,6 @@ class MultiImageDisplay(object):
         figure_size=(10, 8),
         horizontal=True,
     ):
-
         self.npa_list, wl_range, wl_init = self.get_window_level_numpy_array(
             image_list, window_level_list
         )
@@ -744,7 +742,6 @@ class MultiImageDisplay(object):
         self.update_display()
 
     def update_display(self):
-
         # Draw the image(s)
         for ax, npa, title, slider, wl_slider in zip(
             self.axes, self.npa_list, self.title_list, self.slider_list, self.wl_list
@@ -1197,7 +1194,6 @@ class PairedPointDataManipulation(object):
         )
 
     def update_display(self):
-
         self.axes.clear()
 
         # Draw the fixed and moving fiducials and targets using the glyph specifications defined in

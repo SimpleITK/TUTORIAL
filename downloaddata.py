@@ -281,7 +281,6 @@ def fetch_data(cache_file_name, verify=False, cache_directory_name="data"):
 
 
 if __name__ == "__main__":
-
     if len(sys.argv) < 3:
         print("Usage: " + sys.argv[0] + " output_directory manifest.json")
         sys.exit(1)
