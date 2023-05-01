@@ -242,11 +242,15 @@ class Test_notebooks(object):
 
         # Execute the notebook and allow errors (run all cells), output is
         # written to a temporary file which should be automatically deleted.
-        # Windows has a bug with temporary files (see https://bugs.python.org/issue14243),
-        # so we need to set the delete flag to False on windows, addressing that issue.
+        # Windows has a bug with temporary files. On windows, if delete=True
+        # the file is kept open and cannot be read from
+        # (see https://github.com/python/cpython/issues/58451).
+        # We set the delete flag to False on windows and True on all
+        # other operating systems, circumventing the issue.
         with tempfile.NamedTemporaryFile(
             suffix=".ipynb", delete=os.name != "nt"
         ) as fout:
+            output_dir, output_fname = os.path.split(fout.name)
             args = [
                 "jupyter",
                 "nbconvert",
@@ -256,8 +260,10 @@ class Test_notebooks(object):
                 "--ExecutePreprocessor.kernel_name=" + kernel_name,
                 "--ExecutePreprocessor.allow_errors=True",
                 "--ExecutePreprocessor.timeout=600",  # seconds till timeout
+                "--output-dir",
+                output_dir,
                 "--output",
-                fout.name,
+                output_fname,
                 path,
             ]
             subprocess.check_call(args)
