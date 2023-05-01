@@ -67,8 +67,8 @@ jobs:
     # on windows, the pyenchant package includes enchant
     - name: Install dependencies
       run: |
-        pip install --upgrade pip
-        pip install -r tests/requirements_testing.txt
+        python -m pip install --upgrade pip
+        python -m pip install -r tests/requirements_testing.txt
         jupyter nbextension enable --py --sys-prefix widgetsnbextension
     - name: Download data
       if: steps.cache.outputs.cache-hit != 'true'
