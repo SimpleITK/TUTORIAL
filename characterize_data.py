@@ -23,7 +23,7 @@ MAX_PROCESSES = 15
 """
 This script inspects/charachterizes images in a given directory structure. It
 recuresivly traverses the directories and either inspects the files one by one
-or if in DICOM series inspection mode, inspects the data on a per series basis 
+or if in DICOM series inspection mode, inspects the data on a per series basis
 (all 2D series files combined into a single 3D image).
 
 To run the script one needs to specify:
@@ -31,15 +31,15 @@ To run the script one needs to specify:
     2. Output file name.
     3. The analysis type to perform per_file or per_series. The latter indicates
        we are only interested in DICOM files. When run using per_file empty lines
-       in the results file are due to: 
+       in the results file are due to:
            a. The file is not an image or is a corrupt image file.
            b. SimpleITK was unable to read the image file (contact us with an example).
     4. Optional SimpleITK imageIO to use. The default value is
        the empty string, indicating that all file types should be read.
-       To see the set of ImageIO types supported by your version of SimpleITK, 
-       call ImageFileReader::GetRegisteredImageIOs() or simply print an 
+       To see the set of ImageIO types supported by your version of SimpleITK,
+       call ImageFileReader::GetRegisteredImageIOs() or simply print an
        ImageFileReader object.
-    5. Optional exteranl applications to run. Their return value (zero or 
+    5. Optional exteranl applications to run. Their return value (zero or
        non zero) is used to log success or failure. A nice example is the
        dciodvfy program from David Clunie (https://www.dclunie.com/dicom3tools.html)
        which validates compliance with the DICOM standard.
@@ -50,7 +50,7 @@ To run the script one needs to specify:
        tags is written to the result file.
     8. When the metadata tags are provided corrosponding column headings
        are also required. These are used in the output csv file.
-    
+
 Examples:
 Run a generic file analysis:
 python characterize_data.py data/ output/generic_image_data_report.csv per_file \
@@ -305,7 +305,7 @@ def inspect_single_series(series_data, meta_data_keys=[]):
         # separate directories and SimpleITK expects them to be in a single directory
         # we use a tempdir and symbolic links to enable SimpleITK to read the series as
         # a single image. Additionally the files are renamed as they may have resided in
-        # separate directories with the same file name. Finally, unfortunatly on windows
+        # separate directories with the same file name. Finally, unfortunately on windows
         # we copy the files to the tempdir as the os.symlink documentation says that
         # "On newer versions of Windows 10, unprivileged accounts can create symlinks
         # if Developer Mode is enabled. When Developer Mode is not available/enabled,

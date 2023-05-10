@@ -153,7 +153,7 @@ class Test_notebooks(object):
                     try:
                         if (
                             "http" not in document_link[2]
-                        ):  # Local file (uri uses forward slashes, windows backwards).
+                        ):  # Local file (url uses forward slashes, windows backwards).
                             url = "file:///" + os.path.abspath(
                                 document_link[2]
                             ).replace("\\", "/")
