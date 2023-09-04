@@ -2,7 +2,7 @@ name: sitkpy
 
 channels:
   - defaults
-  - simpleitk
+  - conda-forge
   
 dependencies:
   - python=3.9
