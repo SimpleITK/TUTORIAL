@@ -23,9 +23,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: 3.9
     - name: Install and run black for notebooks
@@ -41,8 +41,8 @@ jobs:
         inputs: ["00_ or 01_ or 02_ or 03_ or 04_ or 05_", "06_ or 07_ or 08_ or 09_ or 10_"]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
+    - uses: actions/checkout@v4
+    - uses: actions/cache@v4
       id: cache
       with:
         path: |
@@ -51,7 +51,7 @@ jobs:
         restore-keys: |
           notebook-data-${{ hashFiles('data/manifest.json') }}
     - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: 3.9
     - name: Install enchant on non windows systems
