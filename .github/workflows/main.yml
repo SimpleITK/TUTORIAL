@@ -19,6 +19,9 @@ on:
   # run testing on the first of each month 5am ET / 9am UTC 
   - cron: '0 9 1 * *'
 
+  # Enable manual running of workflow, so we can force execution
+  workflow_dispatch:
+
 jobs:
   lint:
     runs-on: ubuntu-latest
