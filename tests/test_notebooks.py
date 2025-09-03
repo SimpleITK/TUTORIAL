@@ -11,7 +11,7 @@ from enchant.tokenize import Filter, EmailFilter, URLFilter
 from enchant import DictWithPWL
 
 from lxml.html import document_fromstring, etree
-from urllib.request import urlopen, URLError
+from urllib.request import urlopen, URLError, Request
 
 
 """
@@ -141,6 +141,13 @@ class Test_notebooks(object):
         #######################
         # Check that all the links in the markdown cells are valid/accessible.
         #######################
+
+        # Some sites require a user-agent header as they block requests from scripts. Provide a common user-agent so that we can
+        # check the links are accessible.
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; ARM64 Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+        }
+
         no_broken_links = True
 
         cells_and_broken_links = []
@@ -154,12 +161,13 @@ class Test_notebooks(object):
                         if (
                             "http" not in document_link[2]
                         ):  # Local file (url uses forward slashes, windows backwards).
-                            url = "file:///" + os.path.abspath(
-                                document_link[2]
-                            ).replace("\\", "/")
+                            request = Request(
+                                "file:///"
+                                + os.path.abspath(document_link[2]).replace("\\", "/")
+                            )
                         else:  # Remote file.
-                            url = document_link[2]
-                        urlopen(url)
+                            request = Request(document_link[2], headers=headers)
+                        urlopen(request)
                     except URLError:
                         broken_links.append(url)
                 if broken_links:
