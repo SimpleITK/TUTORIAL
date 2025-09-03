@@ -1,5 +1,8 @@
 name: Notebook Testing
 
+env:
+  PYTHON_VERSION: "3.13"
+
 on:
   push:
     branches:
@@ -27,10 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v5
-    - name: Set up Python 3.9
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: ${{ env.PYTHON_VERSION }}
     - name: Install and run black for notebooks
       run: |
         python -m pip install --upgrade pip
@@ -40,8 +43,8 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        # not using macos-latest because pyenchant doesn't work with the new macos-14 arm64
-        os: [ubuntu-latest, macos-13, windows-latest]
+        # using macos-13, last available intel architecture. macos-latest is arm64 architecture.
+        os: [ubuntu-latest, windows-latest, macos-latest, macos-13]
         inputs: ["00_ or 01_ or 02_ or 03_ or 04_ or 05_", "06_ or 07_ or 08_ or 09_ or 10_"]
     runs-on: ${{ matrix.os }}
     steps:
@@ -54,10 +57,10 @@ jobs:
         key: notebook-data-${{ hashFiles('data/manifest.json') }}
         restore-keys: |
           notebook-data-${{ hashFiles('data/manifest.json') }}
-    - name: Set up Python 3.9
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: ${{ env.PYTHON_VERSION }}
     - name: Install enchant on non windows systems
       shell: bash
       run: |
@@ -78,7 +81,11 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: python downloaddata.py data/ data/manifest.json
     - name: run the test
+      shell: bash
       env: 
         SIMPLE_ITK_MEMORY_CONSTRAINED_ENVIRONMENT: 1
-      run: |
+      run: | # pyenchant has a problem locating libenchant on macOS-ARM64. setting this environment variable resolves the issue
+        if [ "$RUNNER_OS" == "macOS" ] && [ "${{ matrix.os }}" != "macos-13" ]; then
+           export PYENCHANT_LIBRARY_PATH=/opt/homebrew/lib/libenchant-2.dylib
+        fi
         pytest -v --tb=short -k "${{matrix.inputs}}" tests/test_notebooks.py::Test_notebooks::test_python_notebook
