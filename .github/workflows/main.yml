@@ -89,3 +89,6 @@ jobs:
            export PYENCHANT_LIBRARY_PATH=/opt/homebrew/lib/libenchant-2.dylib
         fi
         pytest -v --tb=short -k "${{matrix.inputs}}" tests/test_notebooks.py::Test_notebooks::test_python_notebook
+    - name: Setup tmate session on failure
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
