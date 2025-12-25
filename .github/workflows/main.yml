@@ -29,7 +29,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Set up Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v6
       with:
@@ -48,7 +48,7 @@ jobs:
         inputs: ["00_ or 01_ or 02_ or 03_ or 04_ or 05_", "06_ or 07_ or 08_ or 09_ or 10_"]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: actions/cache@v4
       id: cache
       with:
