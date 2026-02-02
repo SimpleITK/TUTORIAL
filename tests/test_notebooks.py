@@ -13,7 +13,6 @@ from enchant import DictWithPWL
 from lxml.html import document_fromstring, etree
 from urllib.request import urlopen, URLError, Request
 
-
 """
 run all tests:
 pytest -v --tb=short

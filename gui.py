@@ -79,6 +79,7 @@ class RegistrationPointDataAquisition(object):
             vmax=self.moving_max_intensity,
         )
         self.update_display()
+        plt.show()
 
     def create_ui(self):
         # Create the active UI components. Height and width are specified in 'em' units. This is
@@ -393,6 +394,7 @@ class PointDataAquisition(object):
             vmax=self.max_intensity,
         )
         self.update_display()
+        plt.show()
         display(ui)
 
     def create_ui(self):
@@ -653,6 +655,7 @@ class MultiImageDisplay(object):
             )
         self.update_display()
         plt.tight_layout()
+        plt.show()
 
     def create_ui(self, shared_slider, wl_range, wl_init):
         # Create the active UI components. Height and width are specified in 'em' units. This is
@@ -832,6 +835,7 @@ class ROIDataAquisition(object):
             vmax=self.max_intensity,
         )
         self.update_display()
+        plt.show()
 
     def create_ui(self):
         # Create the active UI components. Height and width are specified in 'em' units. This is
@@ -1130,6 +1134,7 @@ class PairedPointDataManipulation(object):
         self.fig.canvas.mpl_connect("button_release_event", self.on_release)
 
         self.update_display()
+        plt.show()
 
     def create_ui(self):
         # Create the active UI components. Height and width are specified in 'em' units. This is

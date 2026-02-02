@@ -4,16 +4,17 @@ channels:
   - conda-forge
   
 dependencies:
-  - python=3.13
-  - jupyter
-  - matplotlib
-  - ipywidgets
-  - numpy
-  - scipy
-  - pandas
-  - multiprocess
-  - SimpleITK>=2.2.0
   - pip
   - pip:
-    - itkwidgets
+    - python=3.13
+    - jupyter~=7.0
+    - matplotlib
+    - ipywidgets
+    - numpy
+    - scipy
+    - pandas
+    - multiprocess
+    - SimpleITK>=2.2.0
+    - ipympl
+
     
