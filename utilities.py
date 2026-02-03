@@ -197,6 +197,7 @@ def display_displacement_scaling_effect(
     plt.legend(loc=(0.25, 1.01))
     plt.xlim((-2.5, 2.5))
     plt.ylim((-2.5, 2.5))
+    plt.show()
 
 
 def parameter_space_regular_grid_sampling(*transformation_parameters):
