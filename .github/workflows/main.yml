@@ -76,7 +76,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install -r tests/requirements_testing.txt
-        jupyter nbextension enable --py --sys-prefix widgetsnbextension
+        jupyter server extension enable --py widgetsnbextension
     - name: Download data
       if: steps.cache.outputs.cache-hit != 'true'
       run: python downloaddata.py data/ data/manifest.json
