@@ -4,10 +4,10 @@ channels:
   - conda-forge
   
 dependencies:
+  - python=3.13
   - pip
   - pip:
-    - python=3.13
-    - jupyter~=7.0
+    - notebook~=7.0
     - matplotlib
     - ipywidgets
     - numpy
