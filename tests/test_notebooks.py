@@ -168,7 +168,7 @@ class Test_notebooks(object):
                             request = Request(document_link[2], headers=headers)
                         urlopen(request)
                     except URLError:
-                        broken_links.append(url)
+                        broken_links.append(document_link[2])
                 if broken_links:
                     cells_and_broken_links.append((broken_links, c.source))
         if cells_and_broken_links:
