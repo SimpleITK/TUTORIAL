@@ -68,8 +68,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install enchant-2
         elif [ "$RUNNER_OS" == "macOS" ]; then
-          brew update
-          brew install enchant
+          # GitHub macOS runners sometimes have a conflicting preinstalled OpenSSL
+          # symlink in /usr/local/bin. Avoid failing the workflow on Homebrew link
+          # conflicts; install the dependency needed for libenchant and continue.
+          brew update || true
+          brew install svn
+          brew install openssl@3 || true
+          brew install enchant || {
+            brew link --overwrite --force openssl@3 || true
+            brew install enchant
+          }
         fi
     # on windows, the pyenchant package includes enchant
     - name: Install dependencies
